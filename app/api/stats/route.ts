@@ -39,19 +39,19 @@ export async function GET() {
 
         const recentActivity = recentAssessments.map(a => ({
             id: a.id,
-            candidate_name: a.user.fullName || a.user.email,
-            category_name: a.category?.name || 'Unknown',
+            candidate_name: a.user?.fullName || a.user?.email || 'Unknown User',
+            category_name: a.category?.name || 'Unknown Category',
             score: a.finalScore ? Math.round(a.finalScore).toString() : 'N/A',
             status: a.decision || (a.status === 'completed' ? 'PENDING' : 'IN_PROGRESS'),
-            time: a.createdAt.toISOString().split('T')[0] // Simple date format
+            time: a.createdAt ? new Date(a.createdAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]
         }));
 
         return NextResponse.json({
-            total_candidates: totalCandidates,
-            total_assessments: completedAssessments, // Fixed key to match frontend expectation
-            completed_assessments: completedAssessments, // Keeping old key just in case
-            pending_reviews: pendingReviews,
-            average_score: Math.round(averageScoreAgg._avg.finalScore || 0),
+            total_candidates: totalCandidates || 0,
+            total_assessments: completedAssessments || 0,
+            completed_assessments: completedAssessments || 0,
+            pending_reviews: pendingReviews || 0,
+            average_score: typeof averageScoreAgg._avg.finalScore === 'number' ? Math.round(averageScoreAgg._avg.finalScore) : 0,
             recent_activity: recentActivity
         });
     } catch (error) {
