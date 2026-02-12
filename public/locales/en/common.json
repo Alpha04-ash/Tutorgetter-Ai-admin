@@ -1,0 +1,25 @@
+{
+    "common": {
+        "dashboard": "Dashboard",
+        "assessments": "Assessments",
+        "categories": "Categories",
+        "questions": "Questions",
+        "new_category": "New Category",
+        "back": "Back",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "generate_ai": "Generate AI Questions",
+        "add_question": "Add Question",
+        "language": "Language",
+        "text": "Text",
+        "source": "Source",
+        "description": "Description",
+        "name": "Name",
+        "manage_questions": "Manage Questions",
+        "delete_confirm": "Are you sure you want to delete this?",
+        "success": "Success",
+        "error": "Error"
+    }
+}

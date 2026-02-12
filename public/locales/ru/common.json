@@ -1,0 +1,25 @@
+{
+    "common": {
+        "dashboard": "Панель управления",
+        "assessments": "Оценки",
+        "categories": "Категории",
+        "questions": "Вопросы",
+        "new_category": "Новая категория",
+        "back": "Назад",
+        "save": "Сохранить",
+        "cancel": "Отмена",
+        "delete": "Удалить",
+        "edit": "Редактировать",
+        "generate_ai": "Генерировать вопросы с ИИ",
+        "add_question": "Добавить вопрос",
+        "language": "Язык",
+        "text": "Текст",
+        "source": "Источник",
+        "description": "Описание",
+        "name": "Название",
+        "manage_questions": "Управление вопросами",
+        "delete_confirm": "Вы уверены, что хотите удалить это?",
+        "success": "Успех",
+        "error": "Ошибка"
+    }
+}
