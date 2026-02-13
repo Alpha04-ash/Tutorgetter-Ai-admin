@@ -3,6 +3,14 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET() {
     try {
+        // Explicit connection check
+        await prisma.$connect();
+    } catch (e: any) {
+        console.error("DB Connection Failed:", e);
+        return NextResponse.json({ error: "Database Connection Failed", details: e.message }, { status: 500 });
+    }
+
+    try {
         const totalCandidates = await prisma.user.count({
             where: { role: 'user' }
         });
@@ -58,8 +66,8 @@ export async function GET() {
         console.error("Stats API Error:", error);
         return NextResponse.json({
             error: 'Failed to fetch stats',
-            details: error.message,
-            stack: error.stack
+            details: error instanceof Error ? error.message : String(error),
+            stack: error instanceof Error ? error.stack : undefined
         }, { status: 500 });
     }
 }
