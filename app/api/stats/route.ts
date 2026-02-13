@@ -54,8 +54,12 @@ export async function GET() {
             average_score: typeof averageScoreAgg._avg.finalScore === 'number' ? Math.round(averageScoreAgg._avg.finalScore) : 0,
             recent_activity: recentActivity
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Stats API Error:", error);
-        return NextResponse.json({ error: 'Failed to fetch stats' }, { status: 500 });
+        return NextResponse.json({
+            error: 'Failed to fetch stats',
+            details: error.message,
+            stack: error.stack
+        }, { status: 500 });
     }
 }
